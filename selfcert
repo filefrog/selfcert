@@ -1,0 +1,11 @@
+#!/bin/sh
+
+openssl req \
+  -newkey rsa:2048 \
+  -nodes \
+  -sha256 \
+  -x509 \
+  -days 365 \
+  -subj "/CN=$(hostname -f)/OU=selfcert/serialNumber=$(date +%s)" \
+  -keyout $KEYFILE \
+  -out $CRTFILE
